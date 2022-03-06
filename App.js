@@ -1,12 +1,12 @@
-import CharacterList from './src/components/CharacterList';
 import { StatusBar } from 'expo-status-bar'
+import MainStack from './navigation/MainStack';
 
 export default function App() {
 
   return(
     <>
       <StatusBar style="dark" />
-      <CharacterList/>
+      <MainStack/>
     </>
   )
 }

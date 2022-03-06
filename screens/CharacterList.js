@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react'
-import {View, Text, Image, StyleSheet, ScrollView, StatusBar} from 'react-native'
+import {View, Text, Image, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
 
-export default function CharacterList() {
+export default function CharacterList({navigation}) {
 const [characters, setCharacters] = useState([]);
 useEffect(() => {
     const fetchData = async () => {
@@ -17,12 +17,14 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
-    <Text style={styles.title}>
-        Rick and Morty characters!
-    </Text>
         <ScrollView style={styles.list}>
         {characters.map((character) => (
-            <View key={character.id} style={styles.character}>
+            <TouchableOpacity 
+            key={character.id}
+            onPress={() => navigation.navigate('Character Info', {
+                    id: character.id
+            })}
+            style={styles.character}>
             <Image
                 style={styles.image}
                 source={{uri: `${character.image}`}}
@@ -39,7 +41,7 @@ useEffect(() => {
                 {character.species}
                 </Text>
             </View>
-            </View>
+            </TouchableOpacity>
         ))}
         </ScrollView>
     </View>
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 20,
       fontWeight: 'bold',
-      marginTop: 30,
+      marginTop: 20,
     },
     image: {
       width: 100,
