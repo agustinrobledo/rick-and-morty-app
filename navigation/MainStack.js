@@ -10,8 +10,32 @@ function MainStack() {
   return (
     <NavigationContainer>
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={CharacterList} />
-            <Stack.Screen name="Character Info" component={CharacterInfo} />
+            <Stack.Screen
+            options={{
+                title: 'Rick and Morty',
+                headerStyle: {
+                    backgroundColor: '#F4989C',
+                },
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 20,
+                },
+            }}
+            name="Home" 
+            component={CharacterList} />
+            <Stack.Screen
+            options={{
+                title: 'Character Info',
+                headerStyle: {
+                    backgroundColor: '#ACECF7',
+                },
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 20,
+                },
+            }} 
+            name="Character Info" 
+            component={CharacterInfo} />
         </Stack.Navigator>
     </NavigationContainer>
   )
