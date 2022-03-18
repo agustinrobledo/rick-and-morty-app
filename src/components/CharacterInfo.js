@@ -3,14 +3,12 @@ import {View, Text, Image, StyleSheet } from 'react-native'
 
 export default function CharacterInfo({route, navigation}){
     const {id} = route.params;
-    console.log(id)
     const [loading, setLoading] = useState(true);
     const [character, setCharacter] = useState({})
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
             const json = await response.json();
-            console.log(json)
             setCharacter(json);
             setLoading(false);
         };
